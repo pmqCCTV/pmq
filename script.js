@@ -58,12 +58,17 @@ let currentIndex = 0;
 
 function renderImage() {
   const container = document.getElementById('carousel-image');
-  container.innerHTML = ''; // 清空
+  container.innerHTML = '';
   const img = document.createElement('img');
   img.src = images[currentIndex];
   img.alt = `图片${currentIndex + 1}`;
   img.className = "carousel-image";
+  img.onerror = () => {
+    img.src = 'placeholder.jpg';
+    img.alt = '图片加载失败';
+  };
   container.appendChild(img);
+
 }
 
 // 按钮事件
