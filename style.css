@@ -129,10 +129,6 @@ body {
   opacity: 1;
   visibility: visible;
 }
-.modal.show {
-    opacity: 1;
-    visibility: visible;
-}
 
 .modal-content {
     background-color: var(--primary-bg-color);
