@@ -203,17 +203,27 @@ body {
 }
 
 @media (max-width: 480px) {
-   .narrative-section h1 {
-        font-size: 1.8rem;
-    }
-
-   .narrative-section p {
-        font-size: 0.9rem;
-    }
-
-   .image-overlay-trigger button {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
+  .main-image, .carousel-image {
+    width: 100%;
+    max-width: 100vw;
+  }
+  .container {
+    flex-direction: column;
+    gap: var(--spacing-unit);
+  }
+  .narrative-section h1 {
+    font-size: 2rem;
+  }
+  .narrative-section p {
+    font-size: 0.95rem;
+  }
+  .modal-content {
+    width: 90%;
+    padding: var(--spacing-unit);
+  }
+  .image-overlay-trigger button {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 }
