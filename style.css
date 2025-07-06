@@ -121,22 +121,14 @@ body {
 
 /* 模态框样式 [7] */
 .modal {
-    display: none; /* 默认隐藏 */
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--modal-bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
-
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
 .modal.show {
     opacity: 1;
     visibility: visible;
@@ -185,11 +177,12 @@ body {
 }
 
 /* 响应式设计 [2, 4] */
-@media (max-width: 768px) {
-    body {
-        padding: var(--spacing-unit);
-    }
-
+@media (max-width: 480px) {
+  .main-image, .carousel-image {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
    .container {
         flex-direction: column;
         gap: var(--spacing-unit);
