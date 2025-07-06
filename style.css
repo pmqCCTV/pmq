@@ -66,6 +66,9 @@ body {
 .image-section:hover .main-image {
     transform: scale(1.03); /* 鼠标悬停时轻微放大 [6] */
 }
+.image-section:hover .carousel-image {
+    transform: scale(1.03); /* 鼠标悬停时轻微放大 [6] */
+}
 
 .image-overlay-trigger {
     position: absolute;
