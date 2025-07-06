@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>我爱氛围感</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';">
+  <title>我爱氛围感</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';">
 <body>
-    <main class="container">
-        <div class="image-section">
-            <img src="mmexport1751468023777.jpg" alt="我爱氛围感" class="main-image"loading="lazy"
-     onerror="this.src='placeholder.jpg';this.alt='图片无法加载';">
-            <div class="image-overlay-trigger" id="infoTrigger">
-                <button aria-label="查看更多关于这张照片的信息">?</button>
-            </div>
+  <main class="container">
+    <div class="image-section">
+      <img src="mmexport1751468023777.jpg"
+           alt="室内氛围感照片"
+           class="main-image"
+           loading="lazy"
+           onerror="this.src='placeholder.jpg';this.alt='图片无法加载';">
+      <div class="image-overlay-trigger" id="infoTrigger">
+        <button aria-label="查看更多关于这张照片的信息">?</button>
+      </div>
+    </div>
+    <section class="narrative-section">
+      <section class="carousel-section">
+        <h2>更多图片</h2>
+        <div class="carousel-images">
+          <div id="carousel-image"></div>
+          <button id="prev-btn">上一张</button>
+          <button id="next-btn">下一张</button>
         </div>
-        <section class="narrative-section">
-            <section class="carousel-section">
-                <h2>更多图片</h2>
-                <div class="carousel-images">
-                    <div id="carousel-image"></div>
-                    <button id="prev-btn">上一张</button>
-                    <button id="next-btn">下一张</button>
-                </div>
-            </section>
-            <h1>我爱氛围感</h1>
-            <p>当有人问我理想型时 我又开始描述你了</p>
-        </section>
-        <div id="infoModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>我爱氛围感</h2>
-                <p></p>
-            </div>
-        </div>
-    </main>
-    <footer style="text-align:center; padding: 20px 0;">
-    </footer>
-    <script src="script.js"></script>
+      </section>
+      <h1>我爱氛围感</h1>
+      <p>当有人问我理想型时 我又开始描述你了</p>
+    </section>
+    <div id="infoModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" tabindex="0">&times;</span>
+        <h2>我爱氛围感</h2>
+        <p></p>
+      </div>
+    </div>
+  </main>
+  <footer style="text-align:center; padding: 20px 0;">
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
