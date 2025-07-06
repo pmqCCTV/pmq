@@ -60,7 +60,7 @@ body {
     height: auto; /* 保持图片宽高比 [3] */
     display: block;
     transition: transform 0.3s ease-in-out; /* 悬停动画 [4, 5] */
-  margin: 10px 20px;
+  margin: 10px 0px;
 }
 
 .image-section:hover.main-image {
