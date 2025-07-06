@@ -39,7 +39,11 @@ body {
 .image-section {
     position: relative;
     width: 100%;
-    max-width: 900px; /* 限制图片最大宽度 */
+   img {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+}
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
