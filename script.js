@@ -46,43 +46,69 @@ document.addEventListener('DOMContentLoaded', () => {
             infoModal.removeAttribute('role');
             infoTrigger.focus();
         }
-        // 假设这是你的图片列表
+// 图片数组
 const images = [
-  "图片1",
-  "图片2",
-  "图片3",
-  "图片4",
+  "99e86ea59d4a4febc9bca6ec37d15c7.jpg",
+  "cd411503ae5f0d4d6ca79598c1b493a.jpg",
+  "f9b0231653e0c9a6388991fb517989b.jpg",
+  "e41559c39c1fff29e0b9df7cb88fc34.jpg"
 ];
 
-let startIndex = 0; // 当前显示的起始索引
+let currentIndex = 0;
 
-function renderImages() {
-  const container = document.getElementById('image-container');
-  container.innerHTML = ''; // 清空容器
-  // 只显示3张
-  for (let i = startIndex; i < startIndex + 3 && i < images.length; i++) {
-    const img = document.createElement('img');
-    img.src = images[i];
-    img.style.width = '100px'; // 根据需要调整样式
-    container.appendChild(img);
-  }
+function renderImage() {
+  const container = document.getElementById('carousel-image');
+  container.innerHTML = ''; // 清空
+  const img = document.createElement('img');
+  img.src = images[currentIndex];
+  img.alt = `图片${currentIndex + 1}`;
+  img.className = "carousel-image";
+  container.appendChild(img);
 }
 
-// 事件监听
+// 按钮事件
 document.getElementById('prev-btn').onclick = function() {
-  if (startIndex > 0) {
-    startIndex--;
-    renderImages();
-  }
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  renderImage();
 };
 document.getElementById('next-btn').onclick = function() {
-  if (startIndex < images.length - 3) {
-    startIndex++;
-    renderImages();
-  }
+  currentIndex = (currentIndex + 1) % images.length;
+  renderImage();
 };
 
-renderImages(); // 页面加载时显示
+// 页面加载时显示第一张
+renderImage();
+
+
+// 以下为模态框相关代码（如有可保留，否则可删）
+
+const infoTrigger = document.getElementById("infoTrigger");
+const infoModal = document.getElementById("infoModal");
+const closeButton = document.querySelector(".close-button");
+
+infoTrigger.addEventListener("click", function() {
+    infoModal.style.display = "block";
+    closeButton.focus();
+});
+
+closeButton.addEventListener("click", function() {
+    infoModal.style.display = "none";
+    infoTrigger.querySelector("button").focus();
+});
+
+window.addEventListener("click", function(event) {
+    if (event.target === infoModal) {
+        infoModal.style.display = "none";
+        infoTrigger.querySelector("button").focus();
+    }
+});
+
+window.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && infoModal.style.display === "block") {
+        infoModal.style.display = "none";
+        infoTrigger.querySelector("button").focus();
+    }
+});
     });
 
     // 键盘导航提示：
