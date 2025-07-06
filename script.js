@@ -49,7 +49,8 @@
   // 图片轮播
   常量 图像 = [
     “99e86ea59d4a4febc9bca6ec37d15c7.jpg”,
-    “f9b0231653e0c9a6388991fb517989b.jpg”,
+  ”cd411503ae5f0d4d6ca79598c1b493a.jpg”,
+”31653e0c9a6388991fb517989b.jpg”,
     "e41559c39c1fff29e0b9df7cb88fc34.jpg"
   ];
   让 当前位置索引 = 1;
