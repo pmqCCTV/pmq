@@ -36,17 +36,13 @@ body {
     align-items: center;
 }
 
-.image-section {
-    position: relative;
-    width: 100%;
-   img {
-  width: 100%;
-  height: auto;
-  max-width: 400px;
-}
-    overflow: hidden;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.image-section （图像部分） {
+    位置:相对;
+    宽度: 100%;
+    最大宽度: 900像素; /* 限制图片最大宽度 */
+    溢出:隐藏;
+    border-radius （边界半径）: var （无值）(--边界半径);
+    box-shadow （框阴影）: 0 10像素 30像素 RGBA(0, 0, 0, 0.5);
 }
 
 .main-image {
