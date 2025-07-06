@@ -1,0 +1,219 @@
+/* style.css */
+:root {
+    --primary-bg-color: #1a1a1a; /* 深色背景，营造沉浸感 */
+    --text-color: #f0f0f0; /* 浅色文本，高对比度 [1] */
+    --accent-color: #ffa500; /* 橙色，与图片中T恤颜色呼应 */
+    --modal-bg: rgba(0, 0, 0, 0.8); /* 模态框背景透明度 */
+    --border-radius: 8px;
+    --spacing-unit: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif; /* 确保字体易读 [2, 1] */
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-unit);
+    overflow-x: hidden; /* 防止水平滚动条 */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2);
+    align-items: center;
+}
+
+.image-section {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* 限制图片最大宽度 */
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.main-image {
+    width: 100%;
+    height: auto; /* 保持图片宽高比 [3] */
+    display: block;
+    transition: transform 0.3s ease-in-out; /* 悬停动画 [4, 5] */
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto; /* 保持图片宽高比 [3] */
+    display: block;
+    transition: transform 0.3s ease-in-out; /* 悬停动画 [4, 5] */
+}
+
+.image-section:hover.main-image {
+    transform: scale(1.03); /* 鼠标悬停时轻微放大 [6] */
+}
+
+.image-overlay-trigger {
+    position: absolute;
+    top: var(--spacing-unit);
+    right: var(--spacing-unit);
+    z-index: 10;
+}
+
+.image-overlay-trigger button {
+    background-color: var(--accent-color);
+    color: var(--primary-bg-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.image-overlay-trigger button:hover {
+    background-color: #ff8c00;
+    transform: scale(1.1);
+}
+
+.narrative-section {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    padding: var(--spacing-unit);
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明背景，与主背景融合 */
+    border-radius: var(--border-radius);
+}
+
+.narrative-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-unit);
+    color: var(--accent-color);
+}
+
+.narrative-section p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-unit);
+    opacity: 0.9;
+}
+
+/* 模态框样式 [7] */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--primary-bg-color);
+    margin: auto;
+    padding: calc(var(--spacing-unit) * 2);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    text-align: left;
+}
+
+.modal-content h2 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-unit);
+    font-size: 2rem;
+}
+
+.modal-content p {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-unit);
+    font-size: 1rem;
+}
+
+.close-button {
+    color: var(--text-color);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* 响应式设计 [2, 4] */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-unit);
+    }
+
+   .container {
+        flex-direction: column;
+        gap: var(--spacing-unit);
+    }
+
+   .narrative-section h1 {
+        font-size: 2rem;
+    }
+
+   .narrative-section p {
+        font-size: 0.95rem;
+    }
+
+   .modal-content {
+        width: 90%;
+        padding: var(--spacing-unit);
+    }
+}
+
+@media (max-width: 480px) {
+   .narrative-section h1 {
+        font-size: 1.8rem;
+    }
+
+   .narrative-section p {
+        font-size: 0.9rem;
+    }
+
+   .image-overlay-trigger button {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
