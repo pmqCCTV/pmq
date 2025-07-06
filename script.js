@@ -46,6 +46,43 @@ document.addEventListener('DOMContentLoaded', () => {
             infoModal.removeAttribute('role');
             infoTrigger.focus();
         }
+        // 假设这是你的图片列表
+const images = [
+  "图片1",
+  "图片2",
+  "图片3",
+  "图片4",
+];
+
+let startIndex = 0; // 当前显示的起始索引
+
+function renderImages() {
+  const container = document.getElementById('image-container');
+  container.innerHTML = ''; // 清空容器
+  // 只显示3张
+  for (let i = startIndex; i < startIndex + 3 && i < images.length; i++) {
+    const img = document.createElement('img');
+    img.src = images[i];
+    img.style.width = '100px'; // 根据需要调整样式
+    container.appendChild(img);
+  }
+}
+
+// 事件监听
+document.getElementById('prev-btn').onclick = function() {
+  if (startIndex > 0) {
+    startIndex--;
+    renderImages();
+  }
+};
+document.getElementById('next-btn').onclick = function() {
+  if (startIndex < images.length - 3) {
+    startIndex++;
+    renderImages();
+  }
+};
+
+renderImages(); // 页面加载时显示
     });
 
     // 键盘导航提示：
