@@ -56,11 +56,11 @@ body {
 }
 
 .carousel-image {
-    width: 100%;
-    height: auto; /* 保持图片宽高比 [3] */
-    display: block;
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
     transition: transform 0.3s ease-in-out; /* 悬停动画 [4, 5] */
-    margin: 10px 1px;
 }
 
 .image-section:hover .main-image {
