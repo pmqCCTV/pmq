@@ -63,7 +63,7 @@ body {
     margin: 10px 1px;
 }
 
-.image-section:hover.main-image {
+.image-section:hover .main-image {
     transform: scale(1.03); /* 鼠标悬停时轻微放大 [6] */
 }
 
