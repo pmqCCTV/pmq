@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
       infoModal.classList.remove("show");
       infoModal.removeAttribute('aria-modal');
       infoModal.removeAttribute("role");
-      infoTrigger.querySelector("button").focus();
+      const button = infoTrigger.querySelector("button");
+      button && button.focus();
     });
   }
 
@@ -30,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         infoModal.classList.remove("show");
         infoModal.removeAttribute('aria-modal');
         infoModal.removeAttribute("role");
-        infoTrigger.querySelector("button").focus();
+        const button = infoTrigger.querySelector("button");
+        button && button.focus();
       }
     });
   }
@@ -41,20 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
       infoModal.classList.remove("show");
       infoModal.removeAttribute('aria-modal');
       infoModal.removeAttribute("role");
-      infoTrigger.querySelector("button").focus();
+      const button = infoTrigger.querySelector("button");
+      button && button.focus();
     }
   });
 
   // 图片轮播
   const images = [
-    "99e86ea59d4a4febc9bca6ec37d15c7.jpg"
-    "cd411503ae5f0d4d6ca79598c1b493a.jpg"
+    "99e86ea59d4a4febc9bca6ec37d15c7.jpg",
+    "cd411503ae5f0d4d6ca79598c1b493a.jpg",
     "e41559c39c1fff29e0b9df7cb88fc34.jpg"
   ];
   let currentIndex = 0;
 
   function renderImage() {
     const container = document.getElementById('carousel-image');
+    if (!container) return;
     container.innerHTML = '';
     const img = document.createElement('img');
     img.src = images[currentIndex];
@@ -67,20 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(img);
   }
 
-  document.getElementById('prev-btn').onclick = function() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    renderImage();
-  };
-  document.getElementById('next-btn').onclick = function() {
-    currentIndex = (currentIndex + 1) % images.length;
-    renderImage();
-  };
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  if (prevBtn) {
+    prevBtn.onclick = function () {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      renderImage();
+    };
+  }
+  if (nextBtn) {
+    nextBtn.onclick = function () {
+      currentIndex = (currentIndex + 1) % images.length;
+      renderImage();
+    };
+  }
 
   // 页面加载时显示第一张
   renderImage();
 });
-    // 键盘导航提示：
-    // 使用 Tab 键在可聚焦元素之间前进 [9, 8]
-    // 使用 Shift + Tab 键在可聚焦元素之间后退 [9, 8]
-    // 使用 Enter 键或 Spacebar 键激活按钮和链接 [9, 8]
-});
+
+// 键盘导航提示：
+// 使用 Tab 键在可聚焦元素之间前进 [9, 8]
+// 使用 Shift + Tab 键在可聚焦元素之间后退 [9, 8]
+// 使用 Enter 键或 Spacebar 键激活按钮和链接 [9, 8]
+ 
