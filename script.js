@@ -3,48 +3,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const infoModal = document.getElementById('infoModal');
   const closeButton = document.querySelector('.close-button');
 
-  // 打开模态框
-  if (infoTrigger && infoModal) {
-    infoTrigger.addEventListener("click", () => {
+  // 打开 modal
+  function openModal() {
+    if (infoModal) {
       infoModal.classList.add("show");
       infoModal.setAttribute('aria-modal', 'true');
       infoModal.setAttribute("role", "dialog");
       closeButton && closeButton.focus();
-    });
+    }
   }
-
-  // 关闭模态框
-  if (closeButton && infoModal) {
-    closeButton.addEventListener("click", () => {
+  // 关闭 modal
+  function closeModal() {
+    if (infoModal) {
       infoModal.classList.remove("show");
       infoModal.removeAttribute('aria-modal');
       infoModal.removeAttribute("role");
-      const button = infoTrigger.querySelector("button");
-      button && button.focus();
-    });
-  }
-
-  // 点击模态框外部关闭
-  if (infoModal) {
-    infoModal.addEventListener("click", (event) => {
-      if (event.target === infoModal) {
-        infoModal.classList.remove("show");
-        infoModal.removeAttribute('aria-modal');
-        infoModal.removeAttribute("role");
+      if (infoTrigger) {
         const button = infoTrigger.querySelector("button");
         button && button.focus();
       }
+    }
+  }
+  // 事件绑定
+  if (infoTrigger && infoModal) {
+    infoTrigger.addEventListener("click", openModal);
+    infoTrigger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal();
+      }
     });
   }
-
-  // 按 ESC 键关闭模态框
+  if (closeButton && infoModal) {
+    closeButton.addEventListener("click", closeModal);
+    closeButton.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+  }
+  if (infoModal) {
+    infoModal.addEventListener("click", (event) => {
+      if (event.target === infoModal) closeModal();
+    });
+  }
   document.addEventListener('keydown', (event) => {
-    if (event.key === "Escape" && infoModal.classList.contains("show")) {
-      infoModal.classList.remove("show");
-      infoModal.removeAttribute('aria-modal');
-      infoModal.removeAttribute("role");
-      const button = infoTrigger.querySelector("button");
-      button && button.focus();
+    if (event.key === "Escape" && infoModal && infoModal.classList.contains("show")) {
+      closeModal();
     }
   });
 
@@ -78,15 +84,27 @@ document.addEventListener('DOMContentLoaded', () => {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
       renderImage();
     };
+    prevBtn.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        renderImage();
+      }
+    });
   }
   if (nextBtn) {
     nextBtn.onclick = function () {
       currentIndex = (currentIndex + 1) % images.length;
       renderImage();
     };
+    nextBtn.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % images.length;
+        renderImage();
+      }
+    });
   }
-
-  // 页面加载时显示第一张
   renderImage();
 });
 
