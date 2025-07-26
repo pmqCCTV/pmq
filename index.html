@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700&display=swap" rel="stylesheet">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<button class="nav-btn prev"><i class="fa fa-arrow-left"></i> 上一张</button>
-<button class="nav-btn next">下一张 <i class="fa fa-arrow-right"></i></button>
-  <title>我爱氛围感</title>
+  <!-- 建议放宽Content-Security-Policy，允许外链字体和图标样式 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com;">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <title>我爱氛围感</title>
 </head>
 <body>
   <main class="container">
     <div class="image-section">
       <img src="mmexport1751468023777.jpg"
            alt="室内氛围感照片"
-        class="main-image"
+           class="main-image"
            loading="lazy"
            onerror="this.src='placeholder.jpg';this.alt='图片无法加载';">
       <div class="image-overlay-trigger" id="infoTrigger">
@@ -29,14 +28,14 @@
         <h2>更多图片</h2>
         <div class="carousel-images">
           <div id="carousel-image"></div>
-          <button id="prev-btn">上一张</button>
-          <button id="next-btn">下一张</button>
+          <button id="prev-btn" class="nav-btn"><i class="fa fa-arrow-left"></i> 上一张</button>
+          <button id="next-btn" class="nav-btn">下一张 <i class="fa fa-arrow-right"></i></button>
         </div>
       </section>
-     <h1>我爱氛围感</h1>
+      <h1>我爱氛围感</h1>
       <p>当有人问我理想型时 我又开始描述你了</p>
     </section>
-    <div id="infoModal" class="modal">
+    <div id="infoModal" class="modal" style="display:none;">
       <div class="modal-content">
         <span class="close-button" tabindex="0">&times;</span>
         <h2>我爱氛围感</h2>
@@ -45,7 +44,8 @@
     </div>
   </main>
   <footer style="text-align:center; padding: 20px 0;">
+    <!-- 可添加版权或其他信息 -->
   </footer>
   <script src="script.js"></script>
 </body>
-</html> 
+</html>
