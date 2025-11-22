@@ -56,9 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 图片轮播
   const images = [
-    "99e86ea59d4a4febc9bca6ec37d15c7.jpg",
-    "cd411503ae5f0d4d6ca79598c1b493a.jpg",
-    "e41559c39c1fff29e0b9df7cb88fc34.jpg"
+    "DSC_5547.JPG",
+    "DSC_5519.JPG",
+    "DSC_5514.JPG",
+    "DSC_5430.JPG",
+    "DSC_5368.JPG",
+    "DSC_5313.JPG",
+    "DSC_5211.JPG",
+    "DSC_5175.JPG",
+    "DSC_5170.JPG",
+    "DSC_5058.JPG",
+    "DSC_5049.JPG"
   ];
   let currentIndex = 0;
 
